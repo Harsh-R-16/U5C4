@@ -1,15 +1,22 @@
 import React from "react";
 import "./style.css";
+import { useDispatch } from "react-redux";
+import { create } from "../Redux/action";
 export default function Create() {
-  //  name: "John Smith",
-  // email: "johnsmith@gmail.com",
-  // gender: "male",
-  // roll: "manager",
-  // department: "HR",
-  // salary: 100,
-  // id: 1,
+  const dispatch = useDispatch();
+  const submitHandler = (e) => {
+    let data = {
+      name: e.target.elements[0].value,
+      email: e.target.elements[1].value,
+      gender: e.target.elements[2].value,
+      roll: e.target.elements[3].value,
+      department: e.target.elements[4].value,
+      salary: e.target.elements[5].value,
+    };
+    dispatch(create(data));
+  };
   return (
-    <form action="/employees">
+    <form action="/employees" onSubmit={submitHandler}>
       <h1>Employee Create Page</h1>
       <label htmlFor="">Enter Your Name:</label>
       <input type="text" placeholder="enter your name" />

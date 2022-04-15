@@ -1,12 +1,14 @@
 import React from "react";
 import "./style.css";
-import { employees } from "./data";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function Employee() {
+  let employees = useSelector((state) => state.employees);
+
   let { id } = useParams();
   console.log(id);
   let navigate = useNavigate();
-  let data = employees[+id - 1];
+  let data = employees[+id];
   console.log(data);
   return (
     <div id="single">

@@ -29,6 +29,7 @@ export default function Login() {
         if (res.error === false) {
           //   console.log(res);
           dispatch(login(res.token));
+          localStorage.setItem("username", inp.username);
           navigate("/");
         } else {
           alert(res.message);

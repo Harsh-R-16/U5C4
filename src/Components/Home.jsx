@@ -12,18 +12,23 @@ export default function Home() {
     "Learning Web Development",
   ]);
   React.useEffect(() => {
-    fetch("https://masai-api-mocker.herokuapp.com/user/masai-school", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `https://masai-api-mocker.herokuapp.com/user/${localStorage.getItem(
+        "username"
+      )}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (res.message.includes("Invalid")) {
+        if (res.message && res.message.includes("Invalid")) {
           setData([
             "Harsh Gajera",
             "harsh.gajera17@gmail.com",

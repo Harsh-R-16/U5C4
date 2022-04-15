@@ -208,4 +208,4 @@ let employees = [
   },
 ];
 
-export { employees };
+export default employees;

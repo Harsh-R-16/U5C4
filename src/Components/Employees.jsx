@@ -1,10 +1,11 @@
 import React from "react";
 import "./style.css";
-import { employees } from "./data";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function Employees() {
   let navigate = useNavigate();
-  //   console.log(employees);
+  let employees = useSelector((state) => state.employees);
+
   return (
     <section id="emp">
       <h1>All Employees</h1>
@@ -13,7 +14,7 @@ export default function Employees() {
       </button>
       <article>
         {employees.map(
-          ({ name, email, gender, roll, department, salary, id }) => (
+          ({ name, email, gender, roll, department, salary }, index) => (
             <div>
               <p>
                 <span>Name: </span>
@@ -41,7 +42,7 @@ export default function Employees() {
               </p>
               <button
                 onClick={() => {
-                  navigate(`/employees/${id}`);
+                  navigate(`/employees/${index}`);
                 }}
               >
                 More Details
